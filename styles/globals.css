@@ -6,26 +6,7 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
-}
-
-.main {
+.container {
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -33,6 +14,7 @@ a {
   align-items: center;
   font-size: 10vw;
   flex-direction: column;
+  background-color: pink;
 }
 
 .text_item1 {
@@ -40,4 +22,8 @@ a {
   opacity: 0;
   width: fit-content;
   height: fit-content;
+}
+
+#text-test1 {
+  color: red;
 }
