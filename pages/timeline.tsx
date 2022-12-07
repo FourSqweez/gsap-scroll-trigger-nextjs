@@ -9,22 +9,33 @@ const TimelinePage = () => {
   const boxRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: boxRef.current,
-        markers: true,
-        start: 'top 80%',
-        end: 'top 30%',
-        scrub: 1,
-      },
-    })
+    // const tl = gsap.timeline({
+    //   scrollTrigger: {
+    //     trigger: boxRef.current,
+    //     markers: true,
+    //     start: 'top 80%',
+    //     end: 'top 30%',
+    //     scrub: 1,
+    //   },
+    // })
 
-    tl.to(boxRef.current, {
-      x: 500,
-      duration: 2,
+    // tl.to(boxRef.current, {
+    //   x: 500,
+    //   duration: 2,
+    // })
+    //   .to(boxRef.current, { y: 200, duration: 3 })
+    //   .to(boxRef.current, { x: 0, duration: 2 })
+
+    ScrollTrigger.create({
+      markers: true,
+      start: 'top 80%',
+      end: 'top 50%',
+      trigger: boxRef.current,
+      onEnter: () => console.log('enter!'),
+      onLeave: () => console.log('leave!'),
+      onEnterBack: () => console.log('enterBack'),
+      onLeaveBack: () => console.log('leaveBack!'),
     })
-      .to(boxRef.current, { y: 200, duration: 3 })
-      .to(boxRef.current, { x: 0, duration: 2 })
   }, [])
 
   return (
