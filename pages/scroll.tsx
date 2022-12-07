@@ -11,17 +11,14 @@ const ScrollTriggerPage = () => {
 
   useEffect(() => {
     gsap.to(squareRef.current, {
-      x: 700,
+      //x: 700,
       duration: 3,
       scrollTrigger: {
         trigger: squareRef.current,
         start: 'top 30% ',
-        markers: {
-          startColor: 'purple',
-          endColor: 'fuchsia',
-          fontSize: '4rem',
-          indent: 200,
-        },
+        end: 'center 20%',
+        markers: true,
+        toggleClass: styles.red,
       },
     })
   }, [])
