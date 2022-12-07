@@ -13,12 +13,13 @@ const ScrollTriggerPage = () => {
   useEffect(() => {
     console.log('Children : ', squareRef.current?.children)
     gsap.to(squareRef.current, {
-      x: 1000,
+      //   x: 1000,
       duration: 8,
+      height: '100%',
       scrollTrigger: {
         trigger: squareRef.current,
-        start: 'top 80% ',
-        end: 'top 30%',
+        start: 'top center',
+        end: 'top top',
         scrub: 4,
         toggleActions: 'restart none none none',
         markers: {
