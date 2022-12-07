@@ -1,6 +1,6 @@
 .panel {
   height: 100vh;
-  background-color: beige;
+  background-color: tan;
 }
 
 .box {
@@ -11,4 +11,35 @@
 
 .box_red {
   background-color: red;
+}
+
+.nav {
+  position: sticky;
+  top: 0;
+  transition: all 600ms ease-in-out;
+  background-color: tan;
+  columns: white;
+}
+
+.ul {
+  margin: 0;
+  padding: 40px;
+  display: flex;
+  justify-content: flex-end;
+  list-style-type: none;
+}
+
+.li {
+  margin-right: 60px;
+}
+
+.nav_active {
+  background-color: white;
+  color: black;
+}
+
+.p {
+  padding-top: 50px;
+  margin: 0 auto;
+  max-width: 1200px;
 }
