@@ -31,10 +31,11 @@ const TimelinePage = () => {
       start: 'top 80%',
       end: 'top 50%',
       trigger: boxRef.current,
-      onEnter: () => console.log('enter!'),
-      onLeave: () => console.log('leave!'),
-      onEnterBack: () => console.log('enterBack'),
-      onLeaveBack: () => console.log('leaveBack!'),
+      onUpdate: (self) => console.log(self),
+      // onEnter: () => console.log('enter!'),
+      // onLeave: () => console.log('leave!'),
+      // onEnterBack: () => console.log('enterBack'),
+      // onLeaveBack: () => console.log('leaveBack!'),
     })
   }, [])
 
