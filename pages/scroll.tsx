@@ -16,6 +16,7 @@ const ScrollTriggerPage = () => {
       scrollTrigger: {
         trigger: squareRef.current,
         start: 'top 30% ',
+        end: 'center 20%',
         markers: true,
         toggleClass: styles.red,
       },

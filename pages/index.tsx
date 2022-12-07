@@ -1,56 +1,125 @@
 import Head from 'next/head'
-import Image from 'next/image'
-
 import { useEffect, useRef, useState } from 'react'
 
 import gsap from 'gsap'
+import ScrollTrigger from 'gsap/dist/ScrollTrigger'
+// import ScrollTrigger from 'gsap/ScrollTrigger'
+// ScrollTrigger
+
+gsap.registerPlugin(ScrollTrigger)
+
+const sections = [
+  {
+    id: 1,
+    title: 'Title 1',
+    subtitle: 'Subtitle 1',
+  },
+  {
+    id: 2,
+    title: 'Title 2',
+    subtitle: 'Subtitle 2',
+  },
+  {
+    id: 3,
+    title: 'Title 3',
+    subtitle: 'Subtitle 3',
+  },
+  {
+    id: 4,
+    title: 'Title 4',
+    subtitle: 'Subtitle 4',
+  },
+  {
+    id: 5,
+    title: 'Title 5',
+    subtitle: 'Subtitle 5',
+  },
+  {
+    id: 6,
+    title: 'Title 6',
+    subtitle: 'Subtitle 6',
+  },
+]
 
 export default function Home() {
-  const test1 = useRef<HTMLDivElement>(null)
-  const test2 = useRef<HTMLDivElement>(null)
-  const test3 = useRef<HTMLDivElement>(null)
-  const containerRef = useRef<HTMLDivElement>(null)
+  // const test1 = useRef<HTMLDivElement>(null)
+  // const test2 = useRef<HTMLDivElement>(null)
+  // const test3 = useRef<HTMLDivElement>(null)
+  // const containerRef = useRef<HTMLDivElement>(null)
 
-  const [background, setBackground] = useState('blue')
+  const revealRefs = useRef<HTMLElement[]>([])
 
-  const toggleBackground = () => {
-    const color = background === 'blue' ? 'orange' : 'blue'
-    setBackground(color)
+  revealRefs.current = []
 
-    console.log('button is clicked')
+  const addToRefs = (el: any) => {
+    if (el && !revealRefs.current.includes(el)) {
+      revealRefs.current.push(el)
+    }
+    console.log(revealRefs.current)
   }
 
   useEffect(() => {
-    gsap.to(containerRef.current, {
-      duration: 1,
-      backgroundColor: background,
-      ease: 'none',
+    revealRefs.current.forEach((el, index) => {
+      gsap.fromTo(
+        el,
+        { autoAlpha: 0 },
+        {
+          duration: 1,
+          autoAlpha: 1,
+          ease: 'none',
+          scrollTrigger: {
+            id: `section-${index + 1}`,
+            trigger: el,
+            start: 'top top',
+            end: '20px',
+            toggleActions: 'play none none reverse',
+            markers: true,
+          },
+        }
+      )
     })
-    console.log('bg color is changed')
-  }, [background])
+  }, [])
 
-  console.log('Global : ', test1)
+  // const [background, setBackground] = useState('blue')
 
-  useEffect(() => {
-    // console.log('in useEffect test 1 : ', test1)
-    // console.log('test 2 : ', test2)
-    //console.log('test 3 : ', test3)
+  // const toggleBackground = () => {
+  //   const color = background === 'blue' ? 'orange' : 'blue'
+  //   setBackground(color)
 
-    // gsap.from(containerRef.current, {
-    //   duration: 1,
-    //   delay: 1,
-    //   backgroundColor: 'green',
-    //   autoAlpha: 0,
-    //   ease: 'none',
-    // })
+  //   console.log('button is clicked')
+  // }
 
-    gsap.to(test1.current, {
-      delay: 1,
-      duration: '2',
-      ease: 'none',
-      color: 'yellow',
-    })
-  })
+  // useEffect(() => {
+  //   gsap.to(containerRef.current, {
+  //     duration: 1,
+  //     backgroundColor: background,
+  //     ease: 'none',
+  //   })
+  //   console.log('bg color is changed')
+  // }, [background])
+
+  // console.log('Global : ', test1)
+
+  // useEffect(() => {
+  //   // console.log('in useEffect test 1 : ', test1)
+  //   // console.log('test 2 : ', test2)
+  //   //console.log('test 3 : ', test3)
+
+  //   // gsap.from(containerRef.current, {
+  //   //   duration: 1,
+  //   //   delay: 1,
+  //   //   backgroundColor: 'green',
+  //   //   autoAlpha: 0,
+  //   //   ease: 'none',
+  //   // })
+
+  //   gsap.to(test1.current, {
+  //     delay: 1,
+  //     duration: '2',
+  //     ease: 'none',
+  //     color: 'yellow',
+  //   })
+  // })
 
   return (
     <div>
@@ -60,7 +129,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="container" ref={containerRef}>
+      {/* <div className="container" ref={containerRef}>
         <div id="text-test1" ref={test1}>
           this is test 1
         </div>
@@ -72,6 +141,20 @@ export default function Home() {
         </div>
 
         <button onClick={() => toggleBackground()}>toggle background</button>
+      </div> */}
+
+      <div className="content_container">
+        <div className="section_container">
+          {sections.map((section) => {
+            return (
+              <div key={section.id} ref={addToRefs} className="section_items">
+                <h4>
+                  {section.title} | {section.subtitle}
+                </h4>
+              </div>
+            )
+          })}
+        </div>
       </div>
     </div>
   )
