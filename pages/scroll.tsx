@@ -11,14 +11,20 @@ const ScrollTriggerPage = () => {
 
   useEffect(() => {
     gsap.to(squareRef.current, {
-      //x: 700,
-      duration: 3,
+      x: 1000,
+      duration: 8,
       scrollTrigger: {
         trigger: squareRef.current,
-        start: 'top 30% ',
-        end: () => `+=${squareRef.current?.offsetHeight}`,
-        markers: true,
-        toggleClass: styles.red,
+        start: 'top 60% ',
+        end: 'top 40%',
+        toggleActions: 'restart pause resume complete',
+        // play pause resume reverse restart reset complete none
+        // onEnter    onLeave  onEnterBack  onLeaveBack
+        markers: {
+          startColor: 'purple',
+          endColor: 'fuchsia',
+          fontSize: '3rem',
+        },
       },
     })
   }, [])
