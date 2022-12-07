@@ -16,7 +16,12 @@ const ScrollTriggerPage = () => {
       scrollTrigger: {
         trigger: squareRef.current,
         start: 'top 30% ',
-        markers: true,
+        markers: {
+          startColor: 'purple',
+          endColor: 'fuchsia',
+          fontSize: '4rem',
+          indent: 200,
+        },
       },
     })
   }, [])
