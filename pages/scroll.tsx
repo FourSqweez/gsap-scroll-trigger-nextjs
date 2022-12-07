@@ -13,7 +13,10 @@ const ScrollTriggerPage = () => {
     gsap.to(squareRef.current, {
       x: 700,
       duration: 3,
-      scrollTrigger: square2Ref.current,
+      scrollTrigger: {
+        trigger: square2Ref.current,
+        start: 'top center',
+      },
     })
   }, [])
   return (
