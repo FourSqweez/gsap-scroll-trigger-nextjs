@@ -11,44 +11,22 @@ const ScrollTriggerPage = () => {
   const squareTextRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    console.log('Children : ', squareRef.current?.children)
     gsap.to(squareRef.current, {
       //   x: 1000,
       duration: 8,
-      height: '100%',
       scrollTrigger: {
-        trigger: squareRef.current,
-        start: 'top center',
-        end: 'top top',
+        trigger: square2Ref.current,
+        start: 'top 80%',
+        end: 'top 30%',
         scrub: 4,
         toggleActions: 'restart none none none',
+        pin: squareRef.current,
+        pinSpacing: true,
         markers: {
           startColor: 'purple',
           endColor: 'fuchsia',
           fontSize: '3rem',
         },
-      },
-    })
-
-    // gsap.to((squareRef.current?.children), {
-    //   opacity: 0,
-    //   scrollTrigger: {
-    //     trigger: squareRef.current,
-    //     start: 'top 80% ',
-    //     end: 'top 30%',
-    //     scrub: 4,
-    //     toggleActions: 'restart none none none',
-    //   },
-    // })
-
-    gsap.to(squareTextRef.current, {
-      opacity: 0,
-      scrollTrigger: {
-        trigger: squareRef.current,
-        start: 'top 80% ',
-        end: 'top 30%',
-        scrub: 4,
-        toggleActions: 'restart none none none',
       },
     })
   }, [])
