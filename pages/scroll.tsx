@@ -15,7 +15,7 @@ const ScrollTriggerPage = () => {
       duration: 3,
       scrollTrigger: {
         trigger: squareRef.current,
-        start: 'top center',
+        start: 'top 30% ',
         markers: true,
       },
     })
