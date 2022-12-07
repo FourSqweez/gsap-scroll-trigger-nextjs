@@ -9,24 +9,15 @@ const TimelinePage = () => {
   const boxRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    // gsap.to(boxRef.current, {
-    //   x: 500,
-    //   duration: 2,
-    // })
-
-    // gsap.to(boxRef.current, {
-    //   y: 200,
-    //   duration: 3,
-    //   delay: 2,
-    // })
-
-    // gsap.to(boxRef.current, {
-    //   x: 0,
-    //   duration: 2,
-    //   delay: 5,
-    // })
-
-    const tl = gsap.timeline()
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: boxRef.current,
+        markers: true,
+        start: 'top 80%',
+        end: 'top 30%',
+        scrub: 1,
+      },
+    })
 
     tl.to(boxRef.current, {
       x: 500,
@@ -36,7 +27,13 @@ const TimelinePage = () => {
       .to(boxRef.current, { x: 0, duration: 2 })
   }, [])
 
-  return <div className={styles.box} ref={boxRef}></div>
+  return (
+    <>
+      <div className={styles.panel}></div>
+      <div className={styles.box} ref={boxRef}></div>
+      <div className={styles.panel}></div>
+    </>
+  )
 }
 
 export default TimelinePage

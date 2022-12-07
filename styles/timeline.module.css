@@ -3,3 +3,8 @@
   height: 100px;
   background-color: blue;
 }
+
+.panel {
+  height: 100vh;
+  background-color: pink;
+}
