@@ -8,18 +8,19 @@ gsap.registerPlugin(ScrollTrigger)
 const ScrollTriggerPage = () => {
   const squareRef = useRef<HTMLDivElement>(null)
   const square2Ref = useRef<HTMLDivElement>(null)
+  const squareTextRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    console.log('Children : ', squareRef.current?.children)
     gsap.to(squareRef.current, {
       x: 1000,
       duration: 8,
       scrollTrigger: {
         trigger: squareRef.current,
-        start: 'top 60% ',
-        end: 'top 40%',
-        toggleActions: 'restart pause resume complete',
-        // play pause resume reverse restart reset complete none
-        // onEnter    onLeave  onEnterBack  onLeaveBack
+        start: 'top 80% ',
+        end: 'top 30%',
+        scrub: 4,
+        toggleActions: 'restart none none none',
         markers: {
           startColor: 'purple',
           endColor: 'fuchsia',
@@ -27,17 +28,38 @@ const ScrollTriggerPage = () => {
         },
       },
     })
+
+    // gsap.to((squareRef.current?.children), {
+    //   opacity: 0,
+    //   scrollTrigger: {
+    //     trigger: squareRef.current,
+    //     start: 'top 80% ',
+    //     end: 'top 30%',
+    //     scrub: 4,
+    //     toggleActions: 'restart none none none',
+    //   },
+    // })
+
+    gsap.to(squareTextRef.current, {
+      opacity: 0,
+      scrollTrigger: {
+        trigger: squareRef.current,
+        start: 'top 80% ',
+        end: 'top 30%',
+        scrub: 4,
+        toggleActions: 'restart none none none',
+      },
+    })
   }, [])
+
   return (
     <div>
       <div className={styles.div1}>div1</div>
       <div className={styles.div2}>
         <div className={styles.square} ref={squareRef}>
-          square
+          <div ref={squareTextRef}>Square Text</div>
         </div>
-        <div className={styles.square_2} ref={square2Ref}>
-          square2
-        </div>
+        <div className={styles.square_2} ref={square2Ref}></div>
       </div>
     </div>
   )
