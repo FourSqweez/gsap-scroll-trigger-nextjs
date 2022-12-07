@@ -1,0 +1,14 @@
+.panel {
+  height: 100vh;
+  background-color: beige;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: blue;
+}
+
+.box_red {
+  background-color: red;
+}
